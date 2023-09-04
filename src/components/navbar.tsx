@@ -5,12 +5,8 @@ import React, { useState } from "react";
 import { buttonVariants } from "@/components/ui/button";
 import Link from "next/link";
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  IconDefinition,
-  faGithub,
-  faInstagram,
-} from "@fortawesome/free-brands-svg-icons";
+import { Github, Instagram, LucideIcon } from "lucide-react";
+
 import { ModeToggle } from "./modeToggle";
 
 import { usePathname } from "next/navigation";
@@ -20,17 +16,17 @@ const Header = () => {
 
   const socialMedia: Array<{
     id: number;
-    name: IconDefinition;
+    name: React.ComponentType;
     url: string;
   }> = [
     {
       id: 1,
-      name: faGithub,
+      name: Github,
       url: "https://github.com/DaavidT",
     },
     {
       id: 2,
-      name: faInstagram,
+      name: Instagram,
       url: "https://www.instagram.com/daavid_tal/",
     },
   ];
@@ -67,7 +63,7 @@ const Header = () => {
             href={social.url}
             key={social.id}
           >
-            <FontAwesomeIcon className="text-xl" icon={social.name} />
+            {React.createElement(social.name)}
           </Link>
         ))}
         <ModeToggle />
